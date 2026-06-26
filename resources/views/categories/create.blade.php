@@ -1,28 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('title')
-    <title>create category</title>
+    <title>Create Category</title>
 @endsection
+
+@section('page-title', 'Create Category')
+
 @section('content')
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <form action="{{ route('categories.store') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name = "name" class="form-control" id="name" aria-describedby="name">
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-
-                        <div class="form-floating">
-                            <textarea class="form-control" name = "dec" placeholder="Leave a dec here" id="description" style="height: 100px"></textarea>
-                            {{-- <label for="floatingTextarea2">Comments</label> --}}
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <form action="{{ route('categories.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
                         </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" name="dec" id="description" rows="4" required></textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-floppy-disk me-1"></i> Submit
+                            </button>
+                            <a href="{{ route('categoies.index') }}" class="btn btn-light">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
 @endsection
